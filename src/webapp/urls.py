@@ -1,7 +1,6 @@
 from django.urls import path
 from webapp.views import IndexView, PictureDetailView, PictureCreateView, PictureUpdateView, PictureDeleteView, \
-    AlbumDetailView, AlbumCreateView, AlbumUpdateView, AlbumDeleteView
-
+    AlbumDetailView, AlbumCreateView, AlbumUpdateView, AlbumDeleteView, PictureTokenView, generate_token_view
 
 app_name = 'webapp'
 
@@ -14,5 +13,8 @@ urlpatterns = [
     path('album/<int:pk>/', AlbumDetailView.as_view(), name='album_detail'),
     path('album/create/', AlbumCreateView.as_view(), name='album_create'),
     path('album/<int:pk>/update/', AlbumUpdateView.as_view(), name='album_update'),
-    path('album/<int:pk>/delete/', AlbumDeleteView.as_view(), name='album_delete')
+    path('album/<int:pk>/delete/', AlbumDeleteView.as_view(), name='album_delete'),
+    path('picture/token/<str:token>/generate-token/', generate_token_view, name='generate_token'),
+    path('picture/token/<uuid:token>/', PictureTokenView.as_view(), name='picture_token'),
+
 ]

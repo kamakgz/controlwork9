@@ -1,4 +1,7 @@
+import uuid
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
@@ -57,3 +60,26 @@ class AlbumDeleteView(PermissionRequiredMixin, DeleteView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
+class PictureTokenView(DetailView):
+    model = Picture
+    template_name = 'picture/detail.html'
+    context_object_name = 'picture'
+    slug_field = 'token'
+    slug_url_kwarg = 'token'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(token=self.kwargs.get('token'))
+
+def generate_token_view(request, token):
+    try:
+        picture = Picture.objects.filter(token=token).first()
+        if request.user == picture.author and picture.token_generated == False:
+            new_token = uuid.uuid4()
+            picture.token = new_token
+            picture.token_generated = True
+            picture.save()
+        return redirect('webapp:picture_token', token=token)
+    except ValueError:
+        return HttpResponse('Ошибочный формат токена')

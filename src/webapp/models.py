@@ -1,3 +1,4 @@
+import uuid
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -13,6 +14,9 @@ class Picture(models.Model):
     album = models.ForeignKey('webapp.Album', on_delete=models.CASCADE, blank=True, null=True,
                               verbose_name='Альбом')
     is_private = models.BooleanField(default=False, verbose_name='Статус')
+    token = models.UUIDField(default=uuid.uuid4, editable=False)
+    token_generated = models.BooleanField(default=False)
+
 
     def get_absolute_url(self):
         return reverse('webapp:picture_detail', kwargs={'pk': self.pk})
@@ -28,6 +32,7 @@ class Album(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='Автор')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     is_private = models.BooleanField(default=False, verbose_name='Приватное')
+
 
     def get_absolute_url(self):
         return reverse('webapp:album_detail', kwargs={'pk': self.pk})

@@ -29,6 +29,13 @@
     {% if picture.album is True %}
     <p>Албом: {{ picture.album }}</p>
     {% endif %}
+    {% if user.is_authenticated and user == picture.author %}
+    {% if picture.token_generated %}
+        <p>Ссылка: <a href="{% url 'webapp:picture_token' picture.token %}">Пройдите по этой ссылке</a></p>
+    {% else %}
+        <a href="{% url 'webapp:generate_token' picture.token %}" class="btn btn-primary">Сгенерировать ссылку</a>
+    {% endif %}
+{% endif %}
     <p>Это фото в избранном у:
 {#        {% for tag in article.tags.all %}#}
 {#        {{ tag.name }} {% if  not forloop.last %},{% endif %}#}
