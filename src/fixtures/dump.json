@@ -1,0 +1,264 @@
+[
+{
+  "model": "webapp.picture",
+  "pk": 3,
+  "fields": {
+    "picture": "pictures/aytmatov.jpg",
+    "caption": "Книга Ч. Айтматова Прощай Гульсары",
+    "created_at": "2023-08-26T09:53:24.318Z",
+    "author": 1,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 4,
+  "fields": {
+    "picture": "pictures/aytmatov2.jpeg",
+    "caption": "Книга Ч. Айтматова Плаха",
+    "created_at": "2023-08-26T09:53:50.821Z",
+    "author": 1,
+    "album": null,
+    "is_private": true
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 5,
+  "fields": {
+    "picture": "pictures/book1.jpeg",
+    "caption": "Книга Сто Лет Одиночества",
+    "created_at": "2023-08-26T09:54:37.115Z",
+    "author": 1,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 6,
+  "fields": {
+    "picture": "pictures/python.jpg",
+    "caption": "Изучаем Python",
+    "created_at": "2023-08-26T09:55:58.282Z",
+    "author": 3,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 7,
+  "fields": {
+    "picture": "pictures/python2.jpeg",
+    "caption": "Python на примерах",
+    "created_at": "2023-08-26T09:57:17.874Z",
+    "author": 2,
+    "album": 2,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 8,
+  "fields": {
+    "picture": "pictures/godofwar.jpeg",
+    "caption": "Диск God of War Ragnarok",
+    "created_at": "2023-08-26T09:58:49.814Z",
+    "author": 3,
+    "album": 1,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 9,
+  "fields": {
+    "picture": "pictures/miles_morales.png",
+    "caption": "Диск PS5 SpiderMan Miles Morales",
+    "created_at": "2023-08-26T09:59:23.631Z",
+    "author": 3,
+    "album": 1,
+    "is_private": true
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 10,
+  "fields": {
+    "picture": "pictures/mk3.jpg",
+    "caption": "Картридж МК 3",
+    "created_at": "2023-08-26T09:59:47.769Z",
+    "author": 4,
+    "album": 1,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 11,
+  "fields": {
+    "picture": "pictures/spongebob.jpeg",
+    "caption": "Игра Спандж Боб",
+    "created_at": "2023-08-26T10:00:09.671Z",
+    "author": 2,
+    "album": 1,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 12,
+  "fields": {
+    "picture": "pictures/megadrive.jpeg",
+    "caption": "Игровая приставка сег а мега драйв",
+    "created_at": "2023-08-26T10:00:39.904Z",
+    "author": 1,
+    "album": 1,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 13,
+  "fields": {
+    "picture": "pictures/everlast.jpeg",
+    "caption": "Боксерская груша",
+    "created_at": "2023-08-26T10:01:02.729Z",
+    "author": 1,
+    "album": 2,
+    "is_private": true
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 14,
+  "fields": {
+    "picture": "pictures/jabulani.jpg",
+    "caption": "Футбольный мяч Джабулани",
+    "created_at": "2023-08-26T10:01:23.898Z",
+    "author": 3,
+    "album": 2,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 15,
+  "fields": {
+    "picture": "pictures/molten.jpeg",
+    "caption": "Баскетбольный мяч Мольтен",
+    "created_at": "2023-08-26T10:01:49.700Z",
+    "author": 3,
+    "album": 1,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 16,
+  "fields": {
+    "picture": "pictures/ring.jpeg",
+    "caption": "Баскетбольное кольцо",
+    "created_at": "2023-08-26T10:02:10.643Z",
+    "author": 4,
+    "album": 2,
+    "is_private": true
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 17,
+  "fields": {
+    "picture": "pictures/bauer.png",
+    "caption": "Хоккейная клюшка Бауэр",
+    "created_at": "2023-08-26T10:02:48.565Z",
+    "author": 4,
+    "album": 2,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 18,
+  "fields": {
+    "picture": "pictures/jungle.jpg",
+    "caption": "Фото джунглей",
+    "created_at": "2023-08-26T10:03:10.873Z",
+    "author": 3,
+    "album": null,
+    "is_private": true
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 19,
+  "fields": {
+    "picture": "pictures/river.jpeg",
+    "caption": "Фото реки",
+    "created_at": "2023-08-26T10:03:26.708Z",
+    "author": 3,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 20,
+  "fields": {
+    "picture": "pictures/lake.jpeg",
+    "caption": "Озеро",
+    "created_at": "2023-08-26T10:03:37.775Z",
+    "author": 3,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 21,
+  "fields": {
+    "picture": "pictures/ocean-waves.jpg",
+    "caption": "Океан",
+    "created_at": "2023-08-26T10:03:53.484Z",
+    "author": 4,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.picture",
+  "pk": 22,
+  "fields": {
+    "picture": "pictures/moutain.jpg",
+    "caption": "Белоснежные горы",
+    "created_at": "2023-08-26T10:04:42.129Z",
+    "author": 3,
+    "album": null,
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 1,
+  "fields": {
+    "title": "Игровой альбом",
+    "desctiption": "Все что связано с играми",
+    "author": 1,
+    "created_at": "2023-08-26T09:54:14.035Z",
+    "is_private": false
+  }
+},
+{
+  "model": "webapp.album",
+  "pk": 2,
+  "fields": {
+    "title": "Спорт инвентарь",
+    "desctiption": "Все что связано со спортивным инвентарем",
+    "author": 4,
+    "created_at": "2023-08-26T09:56:40.342Z",
+    "is_private": true
+  }
+}
+]
