@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'webapp:index' %}">Home</a>
+    <a class="navbar-brand" href="{% url 'webapp:index' %}">Главная</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,11 +24,11 @@
 
       </ul>
       {% if request.user.is_authenticated %}
-            <p class="ms-auto text-secondary d-inline-block my-0 py-auto" href="#">Привет, Ссылка на страницу пользователя</p>
-            <a class="btn btn-dark ms-2" href="#">Выйти</a>
+            <p class="ms-auto text-secondary d-inline-block my-0 py-auto" href="#">Привет <a href="{% url 'accounts:detail' request.user.pk %}">{{ request.user.username }}</a></p>
+            <a class="btn btn-dark ms-2" href="{% url 'accounts:logout' %}">Выйти</a>
       {% else %}
-            <a class="btn btn-dark ms-auto" href="#">Войти</a>
-            <a class="btn btn-outline-secondary ms-2" href="#">Регистрация</a>
+            <a class="btn btn-dark ms-auto" href="{% url 'accounts:login' %}">Войти</a>
+            <a class="btn btn-outline-secondary ms-2" href="{% url 'accounts:register' %}">Регистрация</a>
       {% endif %}
     </div>
   </div>

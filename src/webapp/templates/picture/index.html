@@ -10,19 +10,5 @@
 
 
 {% block content %}
-    {% for picture in pictures %}
-        <div class="card" style="width: 18rem;">
-            <a href="{% url 'webapp:picture_detail' picture.pk %}"><img src="{{ picture.picture.url }}" class="card-img-top" alt="..."></a>
-          <div class="card-body">
-            <h5 class="card-title">Автор: {{ picture.author }}</h5>
-            <p class="card-text">Описание: {{ picture.caption }}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Дата добавления: {{ picture.created_at }}</li>
-              {% if picture.album is True %}
-            <li class="list-group-item">Входит в:</li>
-              {% endif %}
-          </ul>
-        </div>
-    {% endfor %}
+{% include 'partial/pictures_partial.html' %}
 {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Личная страница пользователя {{ user_obj.get_full_name | default:user_obj.username }}</h1>
+
+    <h3>Изображения Пользователя:</h3>
+    {% for picture in user_obj_pictures %}
+        <div class="card" style="width: 18rem;">
+            <a href="{% url 'webapp:picture_detail' picture.pk %}"><img src="{{ picture.picture.url }}" class="card-img-top" alt="..."></a>
+          <div class="card-body">
+            <h5 class="card-title">Автор: {{ picture.author }}</h5>
+            <p class="card-text">Описание: {{ picture.caption }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Дата добавления: {{ picture.created_at }}</li>
+              {% if picture.album is True %}
+                  for
+              {% endif %}
+            <li class="list-group-item">Входит в:</li>
+
+          </ul>
+        </div>
+{% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    <h3>Альбомы пользователя:</h3>
+    {% for album in user_obj_albums %}
+        <a href="{% url 'webapp:album_detail' album.pk %}">{{ album.title }}</a>
+    {% endfor %}
+    <h3>Избранное пользователя:</h3>
+
+
+{% endblock %}

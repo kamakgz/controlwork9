@@ -17,16 +17,23 @@ class Picture(models.Model):
     def get_absolute_url(self):
         return reverse('webapp:picture_detail', kwargs={'pk': self.pk})
 
+    def __str__(self):
+        return self.caption
+
+
 
 class Album(models.Model):
     title = models.CharField(max_length=255, null=False, blank=False, verbose_name='Название альбома')
     desctiption = models.CharField(max_length=2000, null=True, blank=True, verbose_name='Описание альбома')
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='Автор')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
-    is_private = models.BooleanField(default=False, verbose_name='Статус')
+    is_private = models.BooleanField(default=False, verbose_name='Приватное')
 
     def get_absolute_url(self):
         return reverse('webapp:album_detail', kwargs={'pk': self.pk})
+
+    def __str__(self):
+        return self.title
 
 
 class Favorite(models.Model):
