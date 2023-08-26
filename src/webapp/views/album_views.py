@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
@@ -5,7 +6,7 @@ from webapp.forms import AlbumForm, AlbumDeleteForm
 from webapp.models import Album, Picture
 
 
-class AlbumDetailView(DetailView):
+class AlbumDetailView(LoginRequiredMixin,DetailView):
     model = Album
     template_name = 'album/album_detail.html'
     context_object_name = 'album'
@@ -17,7 +18,7 @@ class AlbumDetailView(DetailView):
         return context
 
 
-class AlbumCreateView(CreateView):
+class AlbumCreateView(LoginRequiredMixin, CreateView):
     model = Album
     template_name = 'album/album_create.html'
     form_class = AlbumForm
@@ -26,18 +27,28 @@ class AlbumCreateView(CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class AlbumUpdateView(UpdateView):
+class AlbumUpdateView(PermissionRequiredMixin, UpdateView):
     model = Album
     form_class = AlbumForm
     template_name = 'album/album_update.html'
     context_object_name = 'album'
+    permission_required = 'webapp.album_change'
 
-class AlbumDeleteView(DeleteView):
+    def has_permission(self):
+        def has_permission(self):
+            return super().has_permission() or self.get_object().author == self.request.user
+
+class AlbumDeleteView(PermissionRequiredMixin, DeleteView):
     model = Picture
     template_name = 'album/album_delete.html'
     context_object_name = 'picture'
     success_url = reverse_lazy('webapp:index')
     form_class = AlbumDeleteForm
+    permission_required = 'webapp.delete_album'
+
+    def has_permission(self):
+        def has_permission(self):
+            return super().has_permission() or self.get_object().author == self.request.user
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
