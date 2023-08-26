@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html{% extends 'base.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block nav %}
     <li class="nav-item">
         <a class="nav-link" href="{% url 'webapp:picture_create' %}">Добавить новое изображение</a>
     </li>
-    <li class="nav-item">
+    {% if request.user == picture.author %}
+        <li class="nav-item">
         <a class="nav-link" href="{% url 'webapp:picture_update' picture.pk %}">Изменить</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{% url 'webapp:picture_delete' picture.pk %}">Удалить</a>
     </li>
+    {% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -36,6 +31,13 @@
         <a href="{% url 'webapp:generate_token' picture.token %}" class="btn btn-primary">Сгенерировать ссылку</a>
     {% endif %}
 {% endif %}
+    {% if user.is_authenticated %}
+        {% if picture in user.favorite_pictures.all %}
+            <button data-action="'remove" data-pk="{{ picture.pk }}">Удалить из избранного</button>
+        {% else %}
+            <button data-action="'add" data-pk="{{ picture.pk }}">Добавить в избранное</button>
+        {% endif %}
+    {% endif %}
     <p>Это фото в избранном у:
 {#        {% for tag in article.tags.all %}#}
 {#        {{ tag.name }} {% if  not forloop.last %},{% endif %}#}

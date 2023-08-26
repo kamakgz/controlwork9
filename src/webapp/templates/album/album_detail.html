@@ -6,6 +6,14 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'webapp:album_create' %}">Создать альбом</a>
     </li>
+    {% if request.user == album.author %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:album_update' album.pk %}">Изменить</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:album_delete' album.pk %}">Удалить</a>
+        </li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}

@@ -1,18 +1,31 @@
- {% for picture in pictures %}
-        <div class="card" style="width: 18rem;">
-            <a href="{% url 'webapp:picture_detail' picture.pk %}"><img src="{{ picture.picture.url }}" class="card-img-top" alt="..."></a>
-          <div class="card-body">
-            <h5 class="card-title">Автор: {{ picture.author }}</h5>
-            <p class="card-text">Описание: {{ picture.caption }}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Дата добавления: {{ picture.created_at }}</li>
-              {% if picture.album is True %}
-                  for
-              {% endif %}
-            <li class="list-group-item">Входит в:</li>
-
-          </ul>
+{% load static %}
+{% for picture in pictures %}
+        <div class="row">
+            <div class="col-4 my-3">
+                <div class="card" style="width: 18rem;">
+                    <a href="{% url 'webapp:picture_detail' picture.pk %}"><img src="{{ picture.picture.url }}" class="card-img-top" alt="..."></a>
+                      <div class="card-body">
+                        <h5 class="card-title">Автор: {{ picture.author }}</h5>
+                        <p class="card-text">Описание: {{ picture.caption }}</p>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Дата добавления: {{ picture.created_at }}</li>
+                          {% if picture.album is True %}
+                              for
+                          {% endif %}
+                        <li class="list-group-item">Входит в:</li>
+                        <div class="card-body">
+                            {% if user.is_authenticated %}
+                                {% if picture in user.favorite_pictures.all %}
+                                    <button data-action="'remove" data-pk="{{ picture.pk }}">Удалить из избранного</button>
+                                {% else %}
+                                    <button data-action="'add" data-pk="{{ picture.pk }}">Добавить в избранное</button>
+                                {% endif %}
+                            {% endif %}
+                      </div>
+                  </ul>
+                </div>
+            </div>
         </div>
 {% endfor %}
     {% if is_paginated %}
