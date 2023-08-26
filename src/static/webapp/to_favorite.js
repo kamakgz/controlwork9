@@ -2,11 +2,14 @@ document.querySelectorAll('button[data-action]').forEach(button => {
     button.addEventListener('click', () => {
         const action = button.getAttribute('data-action');
         const pk = button.getAttribute('data-pk');
-        const url = action === 'add' ? `/picture/${pk}/favorite/` : `/picture/${pk}/unfavorite/`;
+        const url = action === 'add' ? `/api/picture/${pk}/favorite/` : `/api/picture/${pk}/favorite/`;
 
         fetch(url, {
             method: 'POST',
-            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': csrfToken,
+            },
             credentials: 'same-origin'
         })
         .then(response => response.json())
