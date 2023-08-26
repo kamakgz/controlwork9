@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html{% extends 'base.html' %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:picture_create' %}">Добавить новое изображение</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:picture_update' picture.pk %}">Изменить</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:picture_delete' picture.pk %}">Удалить</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <h1><img src="{{ picture.picture.url }}" alt=""></h1>
+    <p>Описание: {{ picture.caption }}</p>
+    <p>Дата создания: {{ picture.created_at }}</p>
+    <p>Автор: {{ picture.author }}</p>
+    {% if picture.album is True %}
+    <p>Албом: {{ picture.album }}</p>
+    {% endif %}
+    <p>Это фото в избранном у:
+{#        {% for tag in article.tags.all %}#}
+{#        {{ tag.name }} {% if  not forloop.last %},{% endif %}#}
+{#    {% endfor %}#}
+    </p>
+{% endblock %}
