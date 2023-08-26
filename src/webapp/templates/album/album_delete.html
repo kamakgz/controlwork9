@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Удалить альбом{% endblock %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:album_detail' picture.pk %}">Просмотр</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <h1>Вы уверены что хотите удалить "{{ picture.caption }}"?</h1>
+    <form method="POST" action="{% url "webapp:album_delete" album.pk %}" class="text-center">
+        {% include 'partial/form.html' with button_text='Удалить'%}
+    <p><a href="{% url 'webapp:album_detail' album.pk %}">Назад</a></p>
+    </form>
+{% endblock %}

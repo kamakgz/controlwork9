@@ -25,6 +25,9 @@ class Album(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     is_private = models.BooleanField(default=False, verbose_name='Статус')
 
+    def get_absolute_url(self):
+        return reverse('webapp:album_detail', kwargs={'pk': self.pk})
+
 
 class Favorite(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=False, blank=False)
